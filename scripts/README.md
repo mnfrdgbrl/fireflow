@@ -18,9 +18,11 @@ placeholders (`<FLOW_ID>`, `<bot>`, `<target>`, …) — fill them from your own
 | # | Script | Where it runs | Purpose |
 |---|--------|---------------|---------|
 | 1 | `fireflow_rce.py` | attack box | Langflow unauth RCE; dump `env` to recover reused credentials |
-| 2 | `jwt_matrix.py` | attack box / foothold | find which `alg:none` forge the MCP server accepts |
-| 3 | `mcp_client.py` | attack box / foothold | forge the admin token, register a tool, call it |
-| 4 | `kexec_v4.py` | inside the MCP pod | kubelet exec into the privileged pod → root |
+| 2 | `jwt_matrix.py` | foothold | find which `alg:none` forge the MCP server accepts |
+| 3 | `mcp_client.py` | foothold | forge the admin token, register a tool, call it |
+| 4 | `kexec_v4.py` | inside the MCP pod (launched via `mcp_client.py` from the foothold) | kubelet exec into the privileged pod → root |
+
+> The MCP server is only reachable from the box, so scripts 2–4 run from the **foothold** (your SSH session), not your attack box.
 
 ## Notes on the tricky parts
 
