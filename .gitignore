@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local recon / loot — don't commit real target data or flags
+*.nmap
+*.gnmap
+fireflow-allports.txt
+fireflow-svc.txt
+loot/
+*.flag
