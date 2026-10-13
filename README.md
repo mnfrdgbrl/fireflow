@@ -10,7 +10,7 @@ A root-cause-first walk through a modern **AI agent stack**: a visual agent orch
 
 This write-up favours **root cause over recipe**, and reads each stage through a security-engineering lens. Secrets, the flow ID, and flags are left as `‹placeholders›` on purpose — the goal is to teach the method, not hand over answers.
 
-![Attack path across the AI agent stack](assets/attack-stack.png)
+![Attack path across the AI agent stack](assets/attack-stack.svg)
 
 Read top to bottom: a leaked flow identifier turns an orchestrator feature into unauthenticated code execution; a reused secret moves us to a real user; a trusting JWT check and an open tool-registration endpoint hand us code execution inside a pod; and a single over-broad Kubernetes permission turns that pod into root on the host. The through-line is an AI-security one: the components that make agents useful — dynamic tool code, flexible orchestration, machine-to-machine trust — are exactly the parts that, built carelessly, become the attack surface.
 

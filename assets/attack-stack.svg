@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" role="img" aria-label="Each layer of the AI agent stack falls to a flaw of that layer">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#30363d"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="920" height="560" fill="#0d1117"/>
+
+  <text x="32" y="44" fill="#e6edf3" font-size="22" font-weight="700">Each layer of the AI agent stack falls to a flaw of that layer</text>
+  <text x="32" y="70" fill="#8b949e" font-size="14">Foothold at the top; root at the bottom</text>
+
+  <!-- connectors -->
+  <g stroke="#30363d" stroke-width="1.5" fill="none">
+    <path d="M152 198 V236" marker-end="url(#arrow)"/>
+    <path d="M152 312 V350" marker-end="url(#arrow)"/>
+    <path d="M152 426 V464" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Langflow -->
+  <g>
+    <rect x="32" y="110" width="240" height="88" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.25"/>
+    <text x="52" y="150" fill="#e6edf3" font-size="18" font-weight="700">Langflow</text>
+    <text x="52" y="176" fill="#8b949e" font-size="13">visual agent orchestrator</text>
+    <text x="300" y="150" fill="#e6edf3" font-size="15">CVE-2026-33017: unsafe exec() in flow build</text>
+    <text x="300" y="176" fill="#8b949e" font-size="13">unauth RCE as www-data, then SSH as nightfall</text>
+  </g>
+
+  <!-- MCP server -->
+  <g>
+    <rect x="32" y="224" width="240" height="88" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.25"/>
+    <text x="52" y="264" fill="#e6edf3" font-size="18" font-weight="700">MCP server</text>
+    <text x="52" y="290" fill="#8b949e" font-size="13">custom AI tool registry</text>
+    <text x="300" y="264" fill="#e6edf3" font-size="15">JWT accepts alg:none + arbitrary tool code</text>
+    <text x="300" y="290" fill="#8b949e" font-size="13">forge admin, register a tool, shell in-pod</text>
+  </g>
+
+  <!-- Kubernetes -->
+  <g>
+    <rect x="32" y="338" width="240" height="88" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.25"/>
+    <text x="52" y="378" fill="#e6edf3" font-size="18" font-weight="700">Kubernetes</text>
+    <text x="52" y="404" fill="#8b949e" font-size="13">k3s single node</text>
+    <text x="300" y="378" fill="#e6edf3" font-size="15">service account has get nodes/proxy</text>
+    <text x="300" y="404" fill="#8b949e" font-size="13">kubelet exec into a privileged pod via the proxy</text>
+  </g>
+
+  <!-- Host (root, accent) -->
+  <g>
+    <rect x="32" y="452" width="240" height="88" rx="10" fill="#132033" stroke="#58a6ff" stroke-width="2"/>
+    <text x="52" y="492" fill="#e6edf3" font-size="18" font-weight="700">Host</text>
+    <text x="52" y="518" fill="#8b949e" font-size="13">fireflow root fs</text>
+    <text x="300" y="492" fill="#58a6ff" font-size="15" font-weight="700">root</text>
+    <text x="300" y="518" fill="#8b949e" font-size="13">host / mounted in the pod, read as uid 0</text>
+  </g>
+</svg>
